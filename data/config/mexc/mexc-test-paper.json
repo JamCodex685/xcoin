@@ -3,11 +3,11 @@
   "name": "MEXC Test PAPER",
   "with_server": true,
   "strategy": "RSI",
-  "period": "3m",
+  "period": "5m",
   "poll_scan_time": 3000,
   "min_periods": 32,
   "paper": true,
-  "watch_symbols": "mexc.BTC-USDT,mexc.DOGE-USDT,mexc.CFX-USDT,mexc.LQTY-USDT,mexc.KAVA-USDT,mexc.AGIX-USDT",
+  "watch_symbols": "mexc.BTC-USDT,mexc.DOGE-USDT,mexc.CFX-USDT,mexc.KAVA-USDT,mexc.AGIX-USDT",
   "output": {
     "panacea": {
       "on": true,
@@ -18,7 +18,7 @@
   "server": {
     "ip": "127.0.0.1",
     "port": 17841,
-    "save_pairs": "mexc.BTC-USDT,mexc.DOGE-USDT,mexc.CFX-USDT,mexc.LQTY-USDT,mexc.KAVA-USDT,mexc.AGIX-USDT"
+    "save_pairs": "mexc.BTC-USDT,mexc.DOGE-USDT,mexc.CFX-USDT,mexc.KAVA-USDT,mexc.AGIX-USDT"
   },
   "exchange": "mexc",
   "future": false,
@@ -112,13 +112,6 @@
       "asset": "CFX",
       "currency": "USDT",
       "normalized": "mexc.CFX-USDT"
-    },
-    {
-      "exchange_id": "mexc",
-      "product_id": "LQTY-USDT",
-      "asset": "LQTY",
-      "currency": "USDT",
-      "normalized": "mexc.LQTY-USDT"
     },
     {
       "exchange_id": "mexc",

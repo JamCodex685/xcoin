@@ -11,6 +11,6 @@ module.exports = {
   },
   server: {
     port: 17810,
-    save_pairs: "binanceusdm.BTC-USDT,binanceusdm.DOGE-USDT",
+    save_pairs: "mexc.BTC-USDT,mexc.DOGE-USDT",
   },
 };
