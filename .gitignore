@@ -25,7 +25,6 @@ data/config/user
 /data/strategies/*
 !.gitkeep
 /data/config/user
-/data/config/mexc
 /data/config/jenny
 /data/config/last_config.json
 /config/conf-secret.js
