@@ -23,6 +23,7 @@ data/config/user
 /data/logs/*
 /data/sim/*
 /data/strategies/*
+/extensions/strategies/list/adx.json
 !.gitkeep
 /data/config/user
 /data/config/jenny
