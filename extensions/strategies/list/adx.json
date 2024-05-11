@@ -1,0 +1,73 @@
+{
+    "id": "ADX",
+    "name": "ADX",
+    "des": "ADX",
+    "editable": false,
+    "group": "custom",
+    "order": 70,
+    "strategies": [
+        {
+            "name": "ADX",
+            "des": "ADX",
+            "editable": false,
+            "group": "directionalmovement",
+            "input": [
+                {
+                    "name": "period",
+                    "type": "number",
+                    "step": [
+                        2,
+                        100,
+                        1
+                    ],
+                    "value": 14
+                },
+                {
+                    "name": "valType",
+                    "type": "array",
+                    "list": [
+                        "open",
+                        "high",
+                        "low",
+                        "close",
+                        "volume"
+                    ],
+                    "value": [
+                        "close",
+                        "high",
+                        "low"
+                    ]
+                }
+            ],
+            "output": [
+                {
+                    "name": "adx",
+                    "report": true,
+                    "show": true,
+                    "pos": "bottom",
+                    "type": "line",
+                    "mark": true
+                },
+                {
+                    "name": "signals",
+                    "report": false,
+                    "show": true,
+                    "pos": "bottom",
+                    "type": "marker"
+                }
+            ],
+            "buyPoint": {
+                "connect": "base",
+                "source": "adx",
+                "op": "crossUp",
+                "target": 35
+            },
+            "sellPoint": {
+                "connect": "base",
+                "source": "adx",
+                "op": "crossDown",
+                "target": 20
+            }
+        }
+    ]
+}
