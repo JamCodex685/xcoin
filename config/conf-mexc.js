@@ -16,20 +16,21 @@ const output = {
 const server = {
   ip: "127.0.0.1",
   port: 17988,
-  save_pairs: "binanceusdm.BTC-USDT,binanceusdm.DOGE-USDT",
+  save_pairs: "mexc.BTC-USDT,mexc.DOGE-USDT,mexc.CFX-USDT,mexc.KAVA-USDT,mexc.AGIX-USDT",
   db: "tickers",
 };
 const options = {
-  name: "xcoin",
-  watch_symbols: "binance.BTC-USDT",
+  name: "MEXC Test PAPER",
+  watch_symbols: "mexc.BTC-USDT,mexc.DOGE-USDT,mexc.CFX-USDT,mexc.KAVA-USDT,mexc.AGIX-USDT",
   user: "blake",
-  exchange: "binance",
-  strategy: "PSAR",
-  period: "1d",
+  exchange: "mexc",
+  strategy: "RSI",
+  period: "5m",
   min_periods: 32,
   future: false,
   trade_type: "auto",
   market: "only_long",
+  with_server: true,
   sell_stop_pct: 5, // sell if price drops below this % of bought price (0 to disable)
   buy_stop_pct: 0, // buy if price surges above this % of sold price (0 to disable)
   max_slippage_pct: 0.5, // avoid trading at a slippage above this pct
@@ -92,12 +93,13 @@ const options = {
   buy_profit_pct: 0,
   max_check_order_num: 10,
   product_active: true,
-  paper: false,
+  paper: true,
   product_currency: "USDT",
   product_min_volume: 50000,
   product_without_margin: true,
   same_period_multi_buy: false,
   buy_position_side_when_sell: true,
+  poll_position_side_time: 3000,
   short_buy_pct: 10,
   hasConfig: true,
   hasStrategy: true,
