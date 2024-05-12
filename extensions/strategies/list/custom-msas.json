@@ -9,6 +9,7 @@
         {
             "name": "RSI",
             "des": "RSI",
+            "editable": false,
             "group": "oscillators",
             "input": [
                 {
@@ -97,6 +98,7 @@
         {
             "name": "MACD",
             "group": "moving_averages",
+            "editable": false,
             "input": [
                 {
                     "name": "fastPeriod",
@@ -200,6 +202,7 @@
         {
             "name": "Stochastic",
             "des": "Stochastic",
+            "editable": false,
             "group": "momentum",
             "input": [
                 {
