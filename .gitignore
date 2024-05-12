@@ -23,7 +23,6 @@ data/config/user
 /data/logs/*
 /data/sim/*
 /data/strategies/*
-/extensions/strategies/list/custom-msas.json
 !.gitkeep
 /data/config/user
 /data/config/jenny
