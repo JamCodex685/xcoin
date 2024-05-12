@@ -1,0 +1,91 @@
+{
+    "id": "Stochastic",
+    "name": "Stochastic",
+    "des": "Stochastic",
+    "editable": false,
+    "group": "custom",
+    "order": 80,
+    "strategies": [
+        {
+            "name": "Stochastic",
+            "des": "Stochastic",
+            "editable": false,
+            "group": "momentum",
+            "input": [
+                {
+                    "name": "period",
+                    "type": "number",
+                    "step": [
+                        2,
+                        100,
+                        1
+                    ],
+                    "value": 14
+                },
+                {
+                    "name": "signalPeriod",
+                    "type": "number",
+                    "step": [
+                        2,
+                        100,
+                        1
+                    ],
+                    "value": 3
+                },
+                {
+                    "name": "valType",
+                    "type": "array",
+                    "list": [
+                        "open",
+                        "high",
+                        "low",
+                        "close",
+                        "volume"
+                    ],
+                    "value": [
+                        "close",
+                        "high",
+                        "low"
+                    ]
+                }
+            ],
+            "output": [
+                {
+                    "name": "d",
+                    "report": true,
+                    "show": true,
+                    "pos": "sub",
+                    "type": "line",
+                    "mark": true
+                },
+                {
+                    "name": "k",
+                    "report": true,
+                    "show": true,
+                    "pos": "sub",
+                    "type": "line",
+                    "mark": true
+                },
+                {
+                    "name": "signals",
+                    "report": false,
+                    "show": true,
+                    "pos": "sub",
+                    "type": "marker"
+                }
+            ],
+            "buyPoint": {
+                "connect": "base",
+                "source": "d",
+                "op": "crossUp",
+                "target": 20
+            },
+            "sellPoint": {
+                "connect": "base",
+                "source": "d",
+                "op": "crossDown",
+                "target": 80
+            }
+        }
+    ]
+}
