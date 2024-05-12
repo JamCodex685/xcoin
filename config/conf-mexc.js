@@ -24,7 +24,7 @@ const options = {
   watch_symbols: "mexc.BTC-USDT,mexc.DOGE-USDT,mexc.CFX-USDT,mexc.KAVA-USDT,mexc.AGIX-USDT",
   user: "blake",
   exchange: "mexc",
-  strategy: "custom-msas",
+  strategy: "adx",
   period: "5m",
   min_periods: 32,
   future: false,
