@@ -47,6 +47,34 @@
                         "high",
                         "low"
                     ]
+                },
+                {
+                    "name": "sellLevel",
+                    "type": "number",
+                    "step": [
+                        0,
+                        100,
+                        1
+                    ],
+                    "value": 80,
+                    "show": true,
+                    "pos": "bottom",
+                    "owner": "Stochastic",
+                    "priceline": true
+                },
+                {
+                    "name": "buyLevel",
+                    "type": "number",
+                    "step": [
+                        0,
+                        100,
+                        1
+                    ],
+                    "value": 20,
+                    "show": true,
+                    "pos": "bottom",
+                    "owner": "Stochastic",
+                    "priceline": true
                 }
             ],
             "output": [
@@ -54,7 +82,7 @@
                     "name": "d",
                     "report": true,
                     "show": true,
-                    "pos": "sub",
+                    "pos": "bottom",
                     "type": "line",
                     "mark": true
                 },
@@ -62,7 +90,7 @@
                     "name": "k",
                     "report": true,
                     "show": true,
-                    "pos": "sub",
+                    "pos": "bottom",
                     "type": "line",
                     "mark": true
                 },
@@ -70,7 +98,7 @@
                     "name": "signals",
                     "report": false,
                     "show": true,
-                    "pos": "sub",
+                    "pos": "bottom",
                     "type": "marker"
                 }
             ],
@@ -78,13 +106,13 @@
                 "connect": "base",
                 "source": "d",
                 "op": "crossUp",
-                "target": 20
+                "target": "buyLevel"
             },
             "sellPoint": {
                 "connect": "base",
                 "source": "d",
-                "op": "crossDown",
-                "target": 80
+                "op": "crossUp",
+                "target": "sellLevel"
             }
         }
     ]

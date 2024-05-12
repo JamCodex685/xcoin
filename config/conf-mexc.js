@@ -46,7 +46,7 @@ const options = {
   markup_sell_pct: 0, // % to mark up sell price for orders
   order_type: "maker", // become a market taker (high fees) or a market maker (low fees)
   post_only: true, // when supported by the exchange, use post only type orders.
-  use_fee_asset: false, // use separated fee currency such as binance's BNB.
+  use_fee_asset: true, // use separated fee currency such as binance's BNB.
   days: 2, // default # days for backfill and sim commands
   keep_lookback_periods: 1000, // defaults to a high number of lookback periods
   poll_scan_time: 10000, // ms to poll new klines at
