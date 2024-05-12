@@ -16,12 +16,12 @@ const output = {
 const server = {
   ip: "127.0.0.1",
   port: 17988,
-  save_pairs: "mexc.BTC-USDT,mexc.DOGE-USDT,mexc.CFX-USDT,mexc.KAVA-USDT,mexc.AGIX-USDT",
+  save_pairs: "mexc.BTC-USDT",
   db: "tickers",
 };
 const options = {
   name: "MEXC Test PAPER",
-  watch_symbols: "mexc.BTC-USDT,mexc.DOGE-USDT,mexc.CFX-USDT,mexc.KAVA-USDT,mexc.AGIX-USDT",
+  watch_symbols: "mexc.BTC-USDT",
   user: "blake",
   exchange: "mexc",
   strategy: "MoonshotAllStars",
