@@ -2,7 +2,7 @@
   "conf": "./data/config/mexc/mexc-test-paper.json",
   "name": "MEXC Test PAPER",
   "with_server": true,
-  "strategy": "RSI",
+  "strategy": "MoonshotAllStars",
   "period": "5m",
   "poll_scan_time": 3000,
   "min_periods": 32,
@@ -14,16 +14,6 @@
       "ip": "0.0.0.0",
       "port": 17840
     }
-  },
-  "db": {
-    "mongo": {
-      "db": "xcoin"
-    }
-  },
-  "server": {
-    "ip": "127.0.0.1",
-    "port": 17841,
-    "save_pairs": "mexc.BTC-USDT,mexc.DOGE-USDT,mexc.CFX-USDT,mexc.KAVA-USDT,mexc.AGIX-USDT"
   },
   "exchange": "mexc",
   "future": false,

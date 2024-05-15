@@ -10,8 +10,8 @@ module.exports = {
     {
       name: "MEXC Test PAPER",
       script: "./xcoin.js",
-      watch: ["./data/pm2/restart_mexc_mexc-test-paper.json"],
-      args: "trade mexc --conf ./data/config/mexc/mexc-test-paper.json --with_server",
+      watch: ["./data/pm2/restart_mexc_custom-msas.json"],
+      args: "trade mexc --conf ./data/config/mexc/mexc-test-paper.json",
     },
   ],
 };
