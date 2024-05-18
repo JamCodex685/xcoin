@@ -1,19 +1,700 @@
 {
+  "modified": {
+    "strategy": {
+      "id": "MoonshotAllStars",
+      "name": "MoonshotAllStars",
+      "des": "MoonshotAllStars",
+      "group": "custom",
+      "order": 15,
+      "strategies": [
+        {
+          "name": "MACD",
+          "group": "moving_averages",
+          "input": [
+            {
+              "name": "fastPeriod",
+              "type": "number",
+              "step": [
+                1,
+                200,
+                1
+              ],
+              "value": 12
+            },
+            {
+              "name": "slowPeriod",
+              "type": "number",
+              "step": [
+                1,
+                200,
+                1
+              ],
+              "value": 26
+            },
+            {
+              "name": "signalPeriod",
+              "type": "number",
+              "step": [
+                1,
+                200,
+                1
+              ],
+              "value": 9
+            },
+            {
+              "name": "SimpleMAOscillator",
+              "type": "bool",
+              "value": false
+            },
+            {
+              "name": "SimpleMASignal",
+              "type": "bool",
+              "value": false
+            },
+            {
+              "name": "valType",
+              "type": "array",
+              "list": [
+                "open",
+                "high",
+                "low",
+                "close",
+                "volume"
+              ],
+              "value": [
+                "close"
+              ]
+            }
+          ],
+          "output": [
+            {
+              "name": "MACD",
+              "report": true,
+              "show": true,
+              "pos": "sub",
+              "type": "line"
+            },
+            {
+              "name": "histogram",
+              "report": true,
+              "show": true,
+              "pos": "sub",
+              "mark": true,
+              "type": "line"
+            },
+            {
+              "name": "signal",
+              "report": true,
+              "show": true,
+              "pos": "sub",
+              "type": "line"
+            },
+            {
+              "name": "signals",
+              "report": true,
+              "show": true,
+              "pos": "sub",
+              "type": "marker"
+            }
+          ],
+          "buyPoint": {
+            "connect": "base",
+            "source": "MACD",
+            "op": "lt",
+            "target": 0
+          },
+          "sellPoint": {
+            "connect": "base",
+            "source": "MACD",
+            "op": "gt",
+            "target": 0
+          },
+          "inputParams": {
+            "fastPeriod": 12,
+            "slowPeriod": 26,
+            "signalPeriod": 9,
+            "SimpleMAOscillator": false,
+            "SimpleMASignal": false,
+            "valType": [
+              "close"
+            ]
+          }
+        },
+        {
+          "name": "RSI",
+          "des": "RSI",
+          "group": "oscillators",
+          "input": [
+            {
+              "name": "period",
+              "type": "number",
+              "step": [
+                2,
+                100,
+                1
+              ],
+              "value": 14
+            },
+            {
+              "name": "overBoughtThreshold",
+              "type": "number",
+              "step": [
+                0,
+                100,
+                1
+              ],
+              "value": 73,
+              "show": true,
+              "pos": "bottom",
+              "owner": "RSI",
+              "priceline": true
+            },
+            {
+              "name": "overSoldThreshold",
+              "type": "number",
+              "step": [
+                0,
+                100,
+                1
+              ],
+              "value": 28,
+              "show": true,
+              "pos": "bottom",
+              "owner": "RSI",
+              "priceline": true
+            },
+            {
+              "name": "valType",
+              "type": "array",
+              "list": [
+                "open",
+                "high",
+                "low",
+                "close",
+                "volume"
+              ],
+              "value": [
+                "close"
+              ]
+            }
+          ],
+          "output": [
+            {
+              "name": "RSI",
+              "report": true,
+              "show": true,
+              "pos": "bottom",
+              "type": "line",
+              "mark": true
+            },
+            {
+              "name": "signals",
+              "report": true,
+              "show": true,
+              "pos": "bottom",
+              "type": "marker"
+            }
+          ],
+          "buyPoint": {
+            "connect": "and",
+            "source": "RSI",
+            "op": "crossUp",
+            "target": "overSoldThreshold"
+          },
+          "sellPoint": {
+            "connect": "and",
+            "source": "RSI",
+            "op": "crossUp",
+            "target": "overBoughtThreshold"
+          },
+          "inputParams": {
+            "period": 14,
+            "overBoughtThreshold": 72,
+            "overSoldThreshold": 30,
+            "valType": [
+              "close"
+            ]
+          }
+        },
+        {
+          "name": "Stochastic",
+          "des": "Stochastic",
+          "group": "momentum",
+          "input": [
+            {
+              "name": "period",
+              "type": "number",
+              "step": [
+                2,
+                100,
+                1
+              ],
+              "value": 14
+            },
+            {
+              "name": "signalPeriod",
+              "type": "number",
+              "step": [
+                2,
+                100,
+                1
+              ],
+              "value": 3
+            },
+            {
+              "name": "valType",
+              "type": "array",
+              "list": [
+                "open",
+                "high",
+                "low",
+                "close",
+                "volume"
+              ],
+              "value": [
+                "close",
+                "high",
+                "low"
+              ]
+            },
+            {
+              "name": "sellLevel",
+              "type": "number",
+              "step": [
+                0,
+                100,
+                1
+              ],
+              "value": 75,
+              "show": true,
+              "pos": "bottom",
+              "owner": "Stochastic",
+              "priceline": true
+            },
+            {
+              "name": "buyLevel",
+              "type": "number",
+              "step": [
+                0,
+                100,
+                1
+              ],
+              "value": 20,
+              "show": true,
+              "pos": "bottom",
+              "owner": "Stochastic",
+              "priceline": true
+            }
+          ],
+          "output": [
+            {
+              "name": "d",
+              "report": true,
+              "show": true,
+              "pos": "bottom",
+              "type": "line",
+              "mark": true
+            },
+            {
+              "name": "k",
+              "report": true,
+              "show": true,
+              "pos": "bottom",
+              "type": "line",
+              "mark": true
+            },
+            {
+              "name": "signals",
+              "report": true,
+              "show": true,
+              "pos": "bottom",
+              "type": "marker"
+            }
+          ],
+          "buyPoint": {
+            "connect": "and",
+            "source": "d",
+            "op": "lt",
+            "target": "buyLevel"
+          },
+          "sellPoint": {
+            "connect": "and",
+            "source": "d",
+            "op": "gt",
+            "target": "sellLevel"
+          },
+          "inputParams": {
+            "period": 14,
+            "signalPeriod": 3,
+            "valType": [
+              "close",
+              "high",
+              "low"
+            ],
+            "sellLevel": 75,
+            "buyLevel": 20
+          }
+        }
+      ]
+    }
+  },
   "conf": "./data/config/mexc/mexc-test-paper.json",
   "name": "MEXC Test PAPER",
   "with_server": true,
-  "strategy": "MoonshotAllStars",
+  "strategy": {
+    "id": "MoonshotAllStars",
+    "name": "MoonshotAllStars",
+    "des": "MoonshotAllStars",
+    "group": "custom",
+    "order": 15,
+    "strategies": [
+      {
+        "name": "MACD",
+        "group": "moving_averages",
+        "input": [
+          {
+            "name": "fastPeriod",
+            "type": "number",
+            "step": [
+              1,
+              200,
+              1
+            ],
+            "value": 12
+          },
+          {
+            "name": "slowPeriod",
+            "type": "number",
+            "step": [
+              1,
+              200,
+              1
+            ],
+            "value": 26
+          },
+          {
+            "name": "signalPeriod",
+            "type": "number",
+            "step": [
+              1,
+              200,
+              1
+            ],
+            "value": 9
+          },
+          {
+            "name": "SimpleMAOscillator",
+            "type": "bool",
+            "value": false
+          },
+          {
+            "name": "SimpleMASignal",
+            "type": "bool",
+            "value": false
+          },
+          {
+            "name": "valType",
+            "type": "array",
+            "list": [
+              "open",
+              "high",
+              "low",
+              "close",
+              "volume"
+            ],
+            "value": [
+              "close"
+            ]
+          }
+        ],
+        "output": [
+          {
+            "name": "MACD",
+            "report": true,
+            "show": true,
+            "pos": "sub",
+            "type": "line"
+          },
+          {
+            "name": "histogram",
+            "report": true,
+            "show": true,
+            "pos": "sub",
+            "mark": true,
+            "type": "line"
+          },
+          {
+            "name": "signal",
+            "report": true,
+            "show": true,
+            "pos": "sub",
+            "type": "line"
+          },
+          {
+            "name": "signals",
+            "report": true,
+            "show": true,
+            "pos": "sub",
+            "type": "marker"
+          }
+        ],
+        "buyPoint": {
+          "connect": "base",
+          "source": "MACD",
+          "op": "lt",
+          "target": 0
+        },
+        "sellPoint": {
+          "connect": "base",
+          "source": "MACD",
+          "op": "gt",
+          "target": 0
+        },
+        "inputParams": {
+          "fastPeriod": 12,
+          "slowPeriod": 26,
+          "signalPeriod": 9,
+          "SimpleMAOscillator": false,
+          "SimpleMASignal": false,
+          "valType": [
+            "close"
+          ]
+        }
+      },
+      {
+        "name": "RSI",
+        "des": "RSI",
+        "group": "oscillators",
+        "input": [
+          {
+            "name": "period",
+            "type": "number",
+            "step": [
+              2,
+              100,
+              1
+            ],
+            "value": 14
+          },
+          {
+            "name": "overBoughtThreshold",
+            "type": "number",
+            "step": [
+              0,
+              100,
+              1
+            ],
+            "value": 73,
+            "show": true,
+            "pos": "bottom",
+            "owner": "RSI",
+            "priceline": true
+          },
+          {
+            "name": "overSoldThreshold",
+            "type": "number",
+            "step": [
+              0,
+              100,
+              1
+            ],
+            "value": 28,
+            "show": true,
+            "pos": "bottom",
+            "owner": "RSI",
+            "priceline": true
+          },
+          {
+            "name": "valType",
+            "type": "array",
+            "list": [
+              "open",
+              "high",
+              "low",
+              "close",
+              "volume"
+            ],
+            "value": [
+              "close"
+            ]
+          }
+        ],
+        "output": [
+          {
+            "name": "RSI",
+            "report": true,
+            "show": true,
+            "pos": "bottom",
+            "type": "line",
+            "mark": true
+          },
+          {
+            "name": "signals",
+            "report": true,
+            "show": true,
+            "pos": "bottom",
+            "type": "marker"
+          }
+        ],
+        "buyPoint": {
+          "connect": "and",
+          "source": "RSI",
+          "op": "crossUp",
+          "target": "overSoldThreshold"
+        },
+        "sellPoint": {
+          "connect": "and",
+          "source": "RSI",
+          "op": "crossUp",
+          "target": "overBoughtThreshold"
+        },
+        "inputParams": {
+          "period": 14,
+          "overBoughtThreshold": 72,
+          "overSoldThreshold": 30,
+          "valType": [
+            "close"
+          ]
+        }
+      },
+      {
+        "name": "Stochastic",
+        "des": "Stochastic",
+        "group": "momentum",
+        "input": [
+          {
+            "name": "period",
+            "type": "number",
+            "step": [
+              2,
+              100,
+              1
+            ],
+            "value": 14
+          },
+          {
+            "name": "signalPeriod",
+            "type": "number",
+            "step": [
+              2,
+              100,
+              1
+            ],
+            "value": 3
+          },
+          {
+            "name": "valType",
+            "type": "array",
+            "list": [
+              "open",
+              "high",
+              "low",
+              "close",
+              "volume"
+            ],
+            "value": [
+              "close",
+              "high",
+              "low"
+            ]
+          },
+          {
+            "name": "sellLevel",
+            "type": "number",
+            "step": [
+              0,
+              100,
+              1
+            ],
+            "value": 75,
+            "show": true,
+            "pos": "bottom",
+            "owner": "Stochastic",
+            "priceline": true
+          },
+          {
+            "name": "buyLevel",
+            "type": "number",
+            "step": [
+              0,
+              100,
+              1
+            ],
+            "value": 20,
+            "show": true,
+            "pos": "bottom",
+            "owner": "Stochastic",
+            "priceline": true
+          }
+        ],
+        "output": [
+          {
+            "name": "d",
+            "report": true,
+            "show": true,
+            "pos": "bottom",
+            "type": "line",
+            "mark": true
+          },
+          {
+            "name": "k",
+            "report": true,
+            "show": true,
+            "pos": "bottom",
+            "type": "line",
+            "mark": true
+          },
+          {
+            "name": "signals",
+            "report": true,
+            "show": true,
+            "pos": "bottom",
+            "type": "marker"
+          }
+        ],
+        "buyPoint": {
+          "connect": "and",
+          "source": "d",
+          "op": "lt",
+          "target": "buyLevel"
+        },
+        "sellPoint": {
+          "connect": "and",
+          "source": "d",
+          "op": "gt",
+          "target": "sellLevel"
+        },
+        "inputParams": {
+          "period": 14,
+          "signalPeriod": 3,
+          "valType": [
+            "close",
+            "high",
+            "low"
+          ],
+          "sellLevel": 75,
+          "buyLevel": 20
+        }
+      }
+    ]
+  },
   "period": "5m",
   "poll_scan_time": 3000,
   "min_periods": 32,
   "paper": true,
-  "watch_symbols": "mexc.BTC-USDT,mexc.DOGE-USDT,mexc.CFX-USDT,mexc.KAVA-USDT,mexc.AGIX-USDT",
+  "watch_symbols": "mexc.BTC-USDT",
   "output": {
     "panacea": {
       "on": true,
       "ip": "0.0.0.0",
       "port": 17840
     }
+  },
+  "server": {
+    "ip": "127.0.0.1",
+    "port": 17988,
+    "save_pairs": "mexc.BTC-USDT",
+    "db": "tickers"
   },
   "exchange": "mexc",
   "future": false,
@@ -86,44 +767,14 @@
   "takerFee": 0.1,
   "makerFee": 0.1,
   "same_period_multi_buy": false,
-  "symbols": [
-    {
-      "exchange_id": "mexc",
-      "product_id": "BTC-USDT",
-      "asset": "BTC",
-      "currency": "USDT",
-      "normalized": "mexc.BTC-USDT"
-    },
-    {
-      "exchange_id": "mexc",
-      "product_id": "DOGE-USDT",
-      "asset": "DOGE",
-      "currency": "USDT",
-      "normalized": "mexc.DOGE-USDT"
-    },
-    {
-      "exchange_id": "mexc",
-      "product_id": "CFX-USDT",
-      "asset": "CFX",
-      "currency": "USDT",
-      "normalized": "mexc.CFX-USDT"
-    },
-    {
-      "exchange_id": "mexc",
-      "product_id": "KAVA-USDT",
-      "asset": "KAVA",
-      "currency": "USDT",
-      "normalized": "mexc.KAVA-USDT"
-    },
-    {
-      "exchange_id": "mexc",
-      "product_id": "AGIX-USDT",
-      "asset": "AGIX",
-      "currency": "USDT",
-      "normalized": "mexc.AGIX-USDT"
-    }
-  ],
   "buy_position_side_when_sell": true,
   "poll_position_side_time": 3000,
-  "short_buy_pct": 20
+  "short_buy_pct": 20,
+  "user": "blake",
+  "watch_with_white_list": false,
+  "white_list": "",
+  "hasConfig": true,
+  "hasStrategy": true,
+  "hasMarket": true,
+  "hasBacktest": false
 }
